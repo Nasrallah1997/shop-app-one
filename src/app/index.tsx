@@ -119,7 +119,7 @@ const Index = () => {
       >
         <BottomSheet.Content>
           <View>
-            <Text>asdasd</Text>
+            <Text>Mohamed Nasrallah</Text>
           </View>
         </BottomSheet.Content>
       </BottomSheet>
