@@ -236,7 +236,7 @@ export default function Account() {
       {/* Delete-account confirmation sheet */}
       <AppBottomSheet
         ref={sheetRef}
-        title="Delete account"
+        title="Logout of All Devices"
         description="This action can't be undone."
       >
         <AppBottomSheet.Content>
