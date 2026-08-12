@@ -1,10 +1,11 @@
+import { Typography } from "@/src/components/ui/display";
 import { RowNav } from "@/src/components/ui/navigations";
+import { radius } from "@/src/constants";
 import { useTheme, useUserPreferences } from "@/src/hooks";
 import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -24,7 +25,6 @@ const useStyles = () => {
       paddingHorizontal: 20,
     },
     headerTitle: {
-      fontSize: 20,
       fontWeight: "700",
       color: colors.foreground.primary,
     },
@@ -41,7 +41,7 @@ const useStyles = () => {
     avatar: {
       width: 64,
       height: 64,
-      borderRadius: 32,
+      borderRadius: radius.full,
       marginRight: 14,
       backgroundColor: colors.background.overlay,
     },
@@ -49,17 +49,14 @@ const useStyles = () => {
       justifyContent: "center",
     },
     profileName: {
-      fontSize: 17,
       fontWeight: "700",
       color: colors.foreground.primary,
     },
     profileEmail: {
-      fontSize: 14,
       marginTop: 2,
       color: colors.foreground.secondary,
     },
     sectionTitle: {
-      fontSize: 17,
       fontWeight: "700",
       marginTop: 8,
       marginBottom: 12,
@@ -84,7 +81,13 @@ export default function Account() {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Account</Text>
+        <Typography
+          variant="normalBold"
+          style={styles.headerTitle}
+          textTransform="none"
+        >
+          Account
+        </Typography>
       </View>
 
       <ScrollView
@@ -98,13 +101,19 @@ export default function Account() {
             style={styles.avatar}
           />
           <View style={styles.profileText}>
-            <Text style={styles.profileName}>Jonathan Smith</Text>
-            <Text style={styles.profileEmail}>jonathan@kimzshop.com</Text>
+            <Typography variant="mediumBold" style={styles.profileName}>
+              Jonathan Smith
+            </Typography>
+            <Typography variant="smallRegular">
+              jonathan@kimzshop.com
+            </Typography>
           </View>
         </TouchableOpacity>
 
         {/* Account */}
-        <Text style={styles.sectionTitle}>Account</Text>
+        <Typography variant="mediumBold" style={styles.sectionTitle}>
+          Account
+        </Typography>
         <RowNav
           variant="default"
           title="Edit Profile"
@@ -121,7 +130,9 @@ export default function Account() {
         />
 
         {/* Shopping */}
-        <Text style={styles.sectionTitle}>Shopping</Text>
+        <Typography variant="mediumBold" style={styles.sectionTitle}>
+          Shopping
+        </Typography>
         <RowNav
           variant="default"
           title="Address"
@@ -152,7 +163,9 @@ export default function Account() {
         />
 
         {/* Preferences */}
-        <Text style={styles.sectionTitle}>Preferences</Text>
+        <Typography variant="mediumBold" style={styles.sectionTitle}>
+          Preferences
+        </Typography>
         <RowNav
           variant="default"
           title="Notifications"
@@ -185,7 +198,9 @@ export default function Account() {
         />
 
         {/* Support */}
-        <Text style={styles.sectionTitle}>Support</Text>
+        <Typography variant="mediumBold" style={styles.sectionTitle}>
+          Support
+        </Typography>
         <RowNav
           variant="default"
           title="Help & Support"
