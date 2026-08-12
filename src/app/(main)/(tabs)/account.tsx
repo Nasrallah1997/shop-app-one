@@ -1,49 +1,82 @@
 import { RowNav } from "@/src/components/ui/navigations";
+import { useTheme } from "@/src/hooks";
 import {
   Image,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  useColorScheme,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-// ---------------------------------------------------------------------------
-// Theme — light & dark
-// ---------------------------------------------------------------------------
-const themes = {
-  light: {
-    background: "#FFFFFF",
-    card: "#FFFFFF",
-    border: "#ECECEC",
-    textPrimary: "#1A1A1A",
-    textSecondary: "#8A8A8E",
-    accent: "#1E88FF",
-    danger: "#FF3B30",
-  },
-  dark: {
-    background: "#0E0E10",
-    card: "#1C1C1E",
-    border: "#2C2C2E",
-    textPrimary: "#F5F5F5",
-    textSecondary: "#9A9A9E",
-    accent: "#3B9DFF",
-    danger: "#FF453A",
-  },
+const useStyles = () => {
+  const colors = useTheme();
+
+  const styles = StyleSheet.create({
+    safe: {
+      flex: 1,
+      backgroundColor: colors.background.base,
+    },
+    header: {
+      alignItems: "center",
+      paddingTop: 12,
+      paddingHorizontal: 20,
+    },
+    headerTitle: {
+      fontSize: 20,
+      fontWeight: "700",
+      color: colors.foreground.primary,
+    },
+    content: {
+      paddingHorizontal: 20,
+      paddingTop: 20,
+      paddingBottom: 24,
+    },
+    profileRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 24,
+    },
+    avatar: {
+      width: 64,
+      height: 64,
+      borderRadius: 32,
+      marginRight: 14,
+      backgroundColor: colors.background.overlay,
+    },
+    profileText: {
+      justifyContent: "center",
+    },
+    profileName: {
+      fontSize: 17,
+      fontWeight: "700",
+      color: colors.foreground.primary,
+    },
+    profileEmail: {
+      fontSize: 14,
+      marginTop: 2,
+      color: colors.foreground.secondary,
+    },
+    sectionTitle: {
+      fontSize: 17,
+      fontWeight: "700",
+      marginTop: 8,
+      marginBottom: 12,
+      color: colors.foreground.primary,
+    },
+  });
+
+  return { styles, colors };
 };
 
 export default function Account() {
-  const scheme = useColorScheme();
-  const c = scheme === "dark" ? themes.dark : themes.light;
+  const { styles } = useStyles();
 
   return (
-    <SafeAreaView style={[styles.safe, { backgroundColor: c.background }]}>
+    <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: c.textPrimary }]}>
-          Account
-        </Text>
+        <Text style={styles.headerTitle}>Account</Text>
       </View>
 
       <ScrollView
@@ -57,19 +90,13 @@ export default function Account() {
             style={styles.avatar}
           />
           <View style={styles.profileText}>
-            <Text style={[styles.profileName, { color: c.textPrimary }]}>
-              Jonathan Smith
-            </Text>
-            <Text style={[styles.profileEmail, { color: c.textSecondary }]}>
-              jonathan@kimzshop.com
-            </Text>
+            <Text style={styles.profileName}>Jonathan Smith</Text>
+            <Text style={styles.profileEmail}>jonathan@kimzshop.com</Text>
           </View>
         </TouchableOpacity>
 
         {/* Account */}
-        <Text style={[styles.sectionTitle, { color: c.textPrimary }]}>
-          Account
-        </Text>
+        <Text style={styles.sectionTitle}>Account</Text>
         <RowNav
           variant="default"
           title="Edit Profile"
@@ -77,7 +104,6 @@ export default function Account() {
           trailing="chevron"
           onPress={() => {}}
         />
-
         <RowNav
           variant="default"
           title="Change Password"
@@ -87,9 +113,7 @@ export default function Account() {
         />
 
         {/* Shopping */}
-        <Text style={[styles.sectionTitle, { color: c.textPrimary }]}>
-          Shopping
-        </Text>
+        <Text style={styles.sectionTitle}>Shopping</Text>
         <RowNav
           variant="default"
           title="Address"
@@ -97,7 +121,6 @@ export default function Account() {
           trailing="chevron"
           onPress={() => {}}
         />
-
         <RowNav
           variant="default"
           title="Payment Methods"
@@ -105,7 +128,6 @@ export default function Account() {
           trailing="chevron"
           onPress={() => {}}
         />
-
         <RowNav
           variant="default"
           title="Stores You Follow"
@@ -113,7 +135,6 @@ export default function Account() {
           trailing="chevron"
           onPress={() => {}}
         />
-
         <RowNav
           variant="default"
           title="My Orders"
@@ -123,10 +144,7 @@ export default function Account() {
         />
 
         {/* Preferences */}
-        <Text style={[styles.sectionTitle, { color: c.textPrimary }]}>
-          Preferences
-        </Text>
-
+        <Text style={styles.sectionTitle}>Preferences</Text>
         <RowNav
           variant="default"
           title="Notifications"
@@ -159,10 +177,7 @@ export default function Account() {
         />
 
         {/* Support */}
-        <Text style={[styles.sectionTitle, { color: c.textPrimary }]}>
-          Support
-        </Text>
-
+        <Text style={styles.sectionTitle}>Support</Text>
         <RowNav
           variant="default"
           title="Help & Support"
@@ -188,115 +203,3 @@ export default function Account() {
     </SafeAreaView>
   );
 }
-
-// ---------------------------------------------------------------------------
-// Styles
-// ---------------------------------------------------------------------------
-const styles = StyleSheet.create({
-  safe: {
-    flex: 1,
-  },
-  header: {
-    alignItems: "center",
-    paddingTop: 12,
-    paddingHorizontal: 20,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "700",
-  },
-  content: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 24,
-  },
-  profileRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 24,
-  },
-  avatar: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    marginRight: 14,
-  },
-  profileText: {
-    justifyContent: "center",
-  },
-  profileName: {
-    fontSize: 17,
-    fontWeight: "700",
-  },
-  profileEmail: {
-    fontSize: 14,
-    marginTop: 2,
-  },
-  sectionTitle: {
-    fontSize: 17,
-    fontWeight: "700",
-    marginTop: 8,
-    marginBottom: 12,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderWidth: 1,
-    borderRadius: 14,
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    marginBottom: 12,
-  },
-  rowLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  rowRight: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  icon: {
-    marginRight: 12,
-    width: 20,
-    textAlign: "center",
-  },
-  rowLabel: {
-    fontSize: 15,
-    fontWeight: "600",
-  },
-  rowValue: {
-    fontSize: 14,
-    marginRight: 6,
-  },
-  tabBar: {
-    flexDirection: "row",
-    borderTopWidth: 1,
-    paddingTop: 8,
-    paddingBottom: 20,
-  },
-  tabItem: {
-    flex: 1,
-    alignItems: "center",
-  },
-  tabLabel: {
-    fontSize: 12,
-    marginTop: 4,
-  },
-  badge: {
-    position: "absolute",
-    top: -6,
-    right: -8,
-    minWidth: 16,
-    height: 16,
-    borderRadius: 8,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 3,
-  },
-  badgeText: {
-    color: "#FFFFFF",
-    fontSize: 10,
-    fontWeight: "700",
-  },
-});
