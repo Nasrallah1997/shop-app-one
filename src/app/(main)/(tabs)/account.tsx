@@ -69,7 +69,7 @@ const useStyles = () => {
 
 export default function Account() {
   const { styles } = useStyles();
-  const { theme, setTheme } = useUserPreferences();
+  const { theme, setTheme, language, setLanguage } = useUserPreferences();
 
   const isDark = theme === "dark";
 
@@ -77,6 +77,11 @@ export default function Account() {
     setTheme(isDark ? "light" : "dark");
   };
 
+  const isArabic = language === "ar";
+
+  const handleToggleLanguage = () => {
+    setLanguage(isArabic ? "en" : "ar");
+  };
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
@@ -184,8 +189,8 @@ export default function Account() {
           title="Language"
           icon="world"
           trailing="chevronWithValue"
-          trailingValue="English"
-          onPress={() => {}}
+          trailingValue={isArabic ? "العربية" : "English"}
+          onPress={handleToggleLanguage}
         />
         <RowNav
           variant="default"
