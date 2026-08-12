@@ -1,5 +1,5 @@
 import { RowNav } from "@/src/components/ui/navigations";
-import { useTheme } from "@/src/hooks";
+import { useTheme, useUserPreferences } from "@/src/hooks";
 import {
   Image,
   ScrollView,
@@ -72,6 +72,14 @@ const useStyles = () => {
 
 export default function Account() {
   const { styles } = useStyles();
+  const { theme, setTheme } = useUserPreferences();
+
+  // "theme" may be "light" | "dark" | "system" — toggle flips between light/dark
+  const isDark = theme === "dark";
+
+  const handleToggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -172,8 +180,8 @@ export default function Account() {
           title="Theme"
           icon="palette"
           trailing="chevronWithValue"
-          trailingValue="Light"
-          onPress={() => {}}
+          trailingValue={isDark ? "Dark" : "Light"}
+          onPress={handleToggleTheme}
         />
 
         {/* Support */}
