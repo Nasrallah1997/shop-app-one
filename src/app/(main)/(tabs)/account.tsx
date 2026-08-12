@@ -1,7 +1,10 @@
 import { Typography } from "@/src/components/ui/display";
 import { RowNav } from "@/src/components/ui/navigations";
+import AppBottomSheet from "@/src/components/ui/overlay/AppBottomSheet/AppBottomSheet";
 import { radius } from "@/src/constants";
 import { useTheme, useUserPreferences } from "@/src/hooks";
+import type BottomSheetType from "@gorhom/bottom-sheet";
+import { useRef } from "react";
 import {
   Image,
   ScrollView,
@@ -70,6 +73,7 @@ const useStyles = () => {
 export default function Account() {
   const { styles } = useStyles();
   const { theme, setTheme, language, setLanguage } = useUserPreferences();
+  const sheetRef = useRef<BottomSheetType>(null);
 
   const isDark = theme === "dark";
 
@@ -82,6 +86,7 @@ export default function Account() {
   const handleToggleLanguage = () => {
     setLanguage(isArabic ? "en" : "ar");
   };
+
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.header}>
@@ -224,9 +229,20 @@ export default function Account() {
           title="Logout"
           icon="logout"
           trailing="chevron"
-          onPress={() => {}}
+          onPress={() => sheetRef.current?.expand()}
         />
       </ScrollView>
+
+      {/* Delete-account confirmation sheet */}
+      <AppBottomSheet
+        ref={sheetRef}
+        title="Delete account"
+        description="This action can't be undone."
+      >
+        <AppBottomSheet.Content>
+          {/* your buttons / static content */}
+        </AppBottomSheet.Content>
+      </AppBottomSheet>
     </SafeAreaView>
   );
 }
