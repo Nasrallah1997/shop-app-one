@@ -39,8 +39,8 @@ const useStyles = () => {
       marginBottom: 24,
     },
     avatar: {
-      width: 64,
-      height: 64,
+      width: 60,
+      height: 60,
       borderRadius: radius.full,
       marginRight: 14,
       backgroundColor: colors.background.overlay,
@@ -71,7 +71,6 @@ export default function Account() {
   const { styles } = useStyles();
   const { theme, setTheme } = useUserPreferences();
 
-  // "theme" may be "light" | "dark" | "system" — toggle flips between light/dark
   const isDark = theme === "dark";
 
   const handleToggleTheme = () => {
