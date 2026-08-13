@@ -65,6 +65,12 @@ const useStyles = () => {
       marginBottom: 12,
       color: colors.foreground.primary,
     },
+    rownav: {
+      paddingHorizontal: 16,
+      borderRadius: radius.sm,
+      height: 48,
+      borderWidth: 1,
+    },
   });
 
   return { styles, colors };
@@ -129,6 +135,7 @@ export default function Account() {
           icon="user"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -136,6 +143,7 @@ export default function Account() {
           icon="lock"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
 
         {/* Shopping */}
@@ -148,6 +156,7 @@ export default function Account() {
           icon="map-pin"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -155,6 +164,7 @@ export default function Account() {
           icon="credit-card"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -162,6 +172,7 @@ export default function Account() {
           icon="shopping-cart"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -169,6 +180,7 @@ export default function Account() {
           icon="truck"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
 
         {/* Preferences */}
@@ -181,6 +193,7 @@ export default function Account() {
           icon="bell"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -188,6 +201,7 @@ export default function Account() {
           icon="shield"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -196,6 +210,7 @@ export default function Account() {
           trailing="chevronWithValue"
           trailingValue={isArabic ? "العربية" : "English"}
           onPress={handleToggleLanguage}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -204,6 +219,7 @@ export default function Account() {
           trailing="chevronWithValue"
           trailingValue={isDark ? "Dark" : "Light"}
           onPress={handleToggleTheme}
+          style={styles.rownav}
         />
 
         {/* Support */}
@@ -216,6 +232,7 @@ export default function Account() {
           icon="help"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="default"
@@ -223,6 +240,7 @@ export default function Account() {
           icon="file-text"
           trailing="chevron"
           onPress={() => {}}
+          style={styles.rownav}
         />
         <RowNav
           variant="danger"
@@ -230,6 +248,7 @@ export default function Account() {
           icon="logout"
           trailing="chevron"
           onPress={() => sheetRef.current?.expand()}
+          style={styles.rownav}
         />
       </ScrollView>
 
