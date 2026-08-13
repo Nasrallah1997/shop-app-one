@@ -1,7 +1,8 @@
 import { Typography } from "@/src/components/ui/display";
 import { RowNav } from "@/src/components/ui/navigations";
 import AppBottomSheet from "@/src/components/ui/overlay/AppBottomSheet/AppBottomSheet";
-import { radius } from "@/src/constants";
+import { radius, spacing } from "@/src/constants";
+
 import { useTheme, useUserPreferences } from "@/src/hooks";
 import type BottomSheetType from "@gorhom/bottom-sheet";
 import { useRef } from "react";
@@ -65,11 +66,14 @@ const useStyles = () => {
       marginBottom: 12,
       color: colors.foreground.primary,
     },
-    rownav: {
-      paddingHorizontal: 16,
+    ListRow: {
+      paddingHorizontal: spacing.space16.height,
       borderRadius: radius.sm,
       height: 48,
       borderWidth: 1,
+      borderColor: colors.border.default,
+      gap: spacing.space16.height,
+      margin: spacing.space8.height,
     },
   });
 
@@ -135,7 +139,7 @@ export default function Account() {
           icon="user"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -143,7 +147,7 @@ export default function Account() {
           icon="lock"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
 
         {/* Shopping */}
@@ -156,7 +160,7 @@ export default function Account() {
           icon="map-pin"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -164,7 +168,7 @@ export default function Account() {
           icon="credit-card"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -172,7 +176,7 @@ export default function Account() {
           icon="shopping-cart"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -180,7 +184,7 @@ export default function Account() {
           icon="truck"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
 
         {/* Preferences */}
@@ -193,7 +197,7 @@ export default function Account() {
           icon="bell"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -201,7 +205,7 @@ export default function Account() {
           icon="shield"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -210,7 +214,7 @@ export default function Account() {
           trailing="chevronWithValue"
           trailingValue={isArabic ? "العربية" : "English"}
           onPress={handleToggleLanguage}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -219,7 +223,7 @@ export default function Account() {
           trailing="chevronWithValue"
           trailingValue={isDark ? "Dark" : "Light"}
           onPress={handleToggleTheme}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
 
         {/* Support */}
@@ -232,7 +236,7 @@ export default function Account() {
           icon="help"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="default"
@@ -240,7 +244,7 @@ export default function Account() {
           icon="file-text"
           trailing="chevron"
           onPress={() => {}}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
         <RowNav
           variant="danger"
@@ -248,7 +252,7 @@ export default function Account() {
           icon="logout"
           trailing="chevron"
           onPress={() => sheetRef.current?.expand()}
-          style={styles.rownav}
+          style={styles.ListRow}
         />
       </ScrollView>
 
