@@ -1,4 +1,4 @@
-import { Typography } from "@/src/components/ui/display";
+import { Avatar, Typography } from "@/src/components/ui/display";
 import { RowNav } from "@/src/components/ui/navigations";
 import AppBottomSheet from "@/src/components/ui/overlay/AppBottomSheet/AppBottomSheet";
 import { radius, spacing } from "@/src/constants";
@@ -7,11 +7,10 @@ import { useTheme, useUserPreferences } from "@/src/hooks";
 import type BottomSheetType from "@gorhom/bottom-sheet";
 import { useRef } from "react";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -115,10 +114,7 @@ export default function Account() {
       >
         {/* Profile */}
         <TouchableOpacity style={styles.profileRow} activeOpacity={0.7}>
-          <Image
-            source={{ uri: "https://i.pravatar.cc/150?img=12" }}
-            style={styles.avatar}
-          />
+          <Avatar imgSrc="https://i.pravatar.cc/150?img=12" />
           <View style={styles.profileText}>
             <Typography variant="mediumBold" style={styles.profileName}>
               Jonathan Smith
